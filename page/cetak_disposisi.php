@@ -281,7 +281,7 @@ if (empty($_SESSION['admin'])) {
         list($nama, $jabatan, $ttd, $nip) = mysqli_fetch_array($query);
         echo ' <div id="lead">';
         if ($jabatan !== 'Kepala Puskesmas Bukit Kayu Kapur') {
-            echo '<p> an. Kepala Puskesmas Bukit Kayu Kapur, <br>' . $jabatan . '</p>';
+            echo '<p> an. Kepala Puskesmas Bukit Kayu Kapur <br>' . $jabatan . ',</p>';
         } else {
             echo '<p>' . $jabatan . '</p>';
         }
