@@ -135,7 +135,6 @@ if (!empty($_SESSION['admin'])) {
                 <li><a href="./" class="ams hide-on-med-and-down"><i class="material-icons md-36">mail</i> PS</a></li>
                 <li>
                     <div class="grs">
-                        </>
                 </li>
                 <li><a href="./"><i class="material-icons"></i>&nbsp; Beranda</a></li>
                 <?php
@@ -143,7 +142,10 @@ if (!empty($_SESSION['admin'])) {
                     <li><a class="dropdown-button" href="#!" data-activates="transaksi">Transaksi Surat <i class="material-icons md-18">arrow_drop_down</i></a></li>
                     <ul id='transaksi' class='dropdown-content'>
                         <li><a href="?page=tsm">Surat Masuk</a></li>
-                        <li><a href="?page=tsk">Surat Keluar</a></li>
+                        <?php
+                        if ($_SESSION['jabatan'] != "Kepala Puskesmas Bukit Kayu Kapur") { ?>
+                            <li><a href="?page=tsk">Surat Keluar</a></li>
+                        <?php } ?>
                     </ul>
                 <?php
                 }
