@@ -274,14 +274,14 @@ if (empty($_SESSION['admin'])) {
             }
         }
         echo '
-                </tbody>
+                </tbody>x
             </table>
             ';
         $query = mysqli_query($config, "SELECT nama,jabatan, ttd, nip FROM `tbl_user` INNER JOIN `tbl_disposisi` on tbl_user.id_user = tbl_disposisi.id_user WHERE id_surat = $id_surat");
         list($nama, $jabatan, $ttd, $nip) = mysqli_fetch_array($query);
         echo ' <div id="lead">';
         if ($jabatan !== 'Kepala Puskesmas Bukit Kayu Kapur') {
-            echo '<p> an. Kepala Puskesmas Bukit Kayu Kapur <br>' . $jabatan . '</p>';
+            echo '<p> an. Kepala Puskesmas Bukit Kayu Kapur, <br>' . $jabatan . '</p>';
         } else {
             echo '<p>' . $jabatan . '</p>';
         }
