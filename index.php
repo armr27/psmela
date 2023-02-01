@@ -307,7 +307,8 @@ $config = conn($host, $username, $password, $database);
     <!-- Container END -->
 
     <!-- Javascript START -->
-    <script type="text/javascript" src="asset/js/jquery-2.1.1.min.js"></script>
+    <!-- <script type="text/javascript" src="asset/js/jquery-2.1.1.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="asset/js/materialize.min.js"></script>
     <script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
     <script data-pace-options='{ "ajax": false }' src='./asset/js/pace.min.js'></script>

@@ -29,7 +29,8 @@ if (!empty($_SESSION['admin'])) {
     <!-- Footer END -->
 
     <!-- Javascript START -->
-    <script type="text/javascript" src="asset/js/jquery-2.1.1.min.js"></script>
+    <!-- <script type="text/javascript" src="asset/js/jquery-2.1.1.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="asset/js/materialize.min.js"></script>
     <script type="text/javascript" src="asset/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="asset/js/jquery.autocomplete.min.js"></script>
@@ -49,11 +50,17 @@ if (!empty($_SESSION['admin'])) {
             });
 
             //jquery datepicker
-            $('#tgl_surat,#batas_waktu,#dari_tanggal,#sampai_tanggal').pickadate({
+            $('#batas_waktu,#dari_tanggal,#sampai_tanggal').pickadate({
                 selectMonths: true,
                 selectYears: 10,
                 format: "yyyy-mm-dd"
             });
+            
+            $('#tgl_surat').pickadate({
+                maxDate: +0d
+            });
+
+
 
             //jquery teaxtarea
             $('#isi_ringkas').val('');

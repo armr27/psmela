@@ -19,7 +19,7 @@ if (empty($_SESSION['admin'])) {
 
     <!-- Body START -->
 
-    <body class="bg">
+    <body >
 
         <!-- Header START -->
         <header>
