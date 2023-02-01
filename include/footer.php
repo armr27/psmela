@@ -55,11 +55,10 @@ if (!empty($_SESSION['admin'])) {
                 selectYears: 10,
                 format: "yyyy-mm-dd"
             });
-            
-            $('#tgl_surat').pickadate({
-                maxDate: +0d
-            });
 
+            $("#tgl_surat").pickadate({
+                max: true
+            });
 
 
             //jquery teaxtarea
