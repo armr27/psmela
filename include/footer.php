@@ -57,9 +57,9 @@ if (!empty($_SESSION['admin'])) {
             });
 
             $("#tgl_surat").pickadate({
-                max: true
+                max: true,
+                format:"yyyy-mm-dd"
             });
-
 
             //jquery teaxtarea
             $('#isi_ringkas').val('');
