@@ -48,9 +48,6 @@ if (empty($_SESSION['admin'])) {
                             echo '<script language="javascript">window.history.back();</script>';
                         } else {
                             // upload file ttd
-                            $queryttd = mysqli_query($config, "SELECT ttd FROM tbl_user WHERE id_user='$id_user'");
-                            $datattd = mysqli_fetch_array($queryttd);
-                            unlink('upload/' . $datattd['ttd'] . '');
 
                             $ekstensi = array('png');
                             $ttd = $_FILES['ttd']['name'];
@@ -63,6 +60,11 @@ if (empty($_SESSION['admin'])) {
                                 mkdir($target_dir, 0755, true);
                             }
 
+                            //jika form file tidak kosong akan mengeksekusi script dibawah ini
+                            if ($ttd != "") {
+                            $queryttd = mysqli_query($config, "SELECT ttd FROM tbl_user WHERE id_user='$id_user'");
+                            $datattd = mysqli_fetch_array($queryttd);
+                            unlink('upload/' . $datattd['ttd'] . '');    
                             $rand = rand(1, 10000);
                             $nttd = $rand . "-" . $ttd;
                             //validasi gambar
@@ -90,6 +92,17 @@ if (empty($_SESSION['admin'])) {
                                 $_SESSION['errFormat'] = 'Format file gambar yang diperbolehkan hanya *.PNG!<br/><br/>';
                                 echo '<script language="javascript">window.history.back();</script>';
                                 die;
+                            }
+                        } else {
+                            $query = mysqli_query($config, "UPDATE tbl_user SET username='$username', admin='$admin', nama='$nama', nip='$nip', jabatan='$jabatan' WHERE id_user='$id_user'");
+                                    if ($query == true) {
+                                        $_SESSION['succEdit'] = 'SUKSES! Data User berhasil Dirubah';
+                                        header("Location: ././admin.php?page=sett&sub=usr");
+                                        die();
+                                    } else {
+                                        $_SESSION['errQ'] = 'ERROR! Ada masalah dengan query';
+                                        echo '<script language="javascript">window.history.back();</script>';
+                                    }
                             }
                         }
                     }
@@ -171,7 +184,7 @@ if (empty($_SESSION['admin'])) {
                                                 </option>
                                                 <!-- <option value="3">User Biasa</option> -->
                                                 <option value="2">Administrator</option>
-                                                <option value="4">Kepala Bagian/intansi</option>
+                                                <option value="4">Kepala Bagian/Intansi</option>
                                             </select>
                                         </div>
                                         <?php

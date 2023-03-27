@@ -48,7 +48,7 @@ if (!empty($_SESSION['admin'])) {
                 <li><a href="./"><i class="material-icons middle">dashboard</i> Beranda</a></li>
                 <li class="no-padding">
                     <?php
-                    if ($_SESSION['admin'] == 1 || $_SESSION['admin'] == 3 || $_SESSION['admin'] == 4) { ?>
+                    if ($_SESSION['admin'] == 1 || $_SESSION['admin'] == 2 || $_SESSION['admin'] == 4) { ?>
                         <ul class="collapsible collapsible-accordion">
                             <li>
                                 <a class="collapsible-header"><i class="material-icons">repeat</i> Transaksi Surat</a>
@@ -138,7 +138,7 @@ if (!empty($_SESSION['admin'])) {
                 </li>
                 <li><a href="./"><i class="material-icons"></i>&nbsp; Beranda</a></li>
                 <?php
-                if ($_SESSION['admin'] == 1 || $_SESSION['admin'] == 3 || $_SESSION['admin'] == 4) { ?>
+                if ($_SESSION['admin'] == 1 || $_SESSION['admin'] == 2 || $_SESSION['admin'] == 4) { ?>
                     <li><a class="dropdown-button" href="#!" data-activates="transaksi">Transaksi Surat <i class="material-icons md-18">arrow_drop_down</i></a></li>
                     <ul id='transaksi' class='dropdown-content'>
                         <li><a href="?page=tsm">Surat Masuk</a></li>

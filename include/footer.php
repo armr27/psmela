@@ -38,6 +38,7 @@ if (!empty($_SESSION['admin'])) {
     <script type="text/javascript">
         $(document).ready(function() {
             //jquery dropdown
+
             $(".dropdown-button").dropdown({
                 hover: false
             });
@@ -52,7 +53,8 @@ if (!empty($_SESSION['admin'])) {
             //jquery datepicker
             $('#batas_waktu,#dari_tanggal,#sampai_tanggal').pickadate({
                 selectMonths: true,
-                selectYears: 10,
+                selectYears: true,
+                max: true,
                 format: "yyyy-mm-dd"
             });
 

@@ -23,11 +23,7 @@ if (empty($_SESSION['admin'])) {
             $no_surat = $_REQUEST['no_surat'];
             $asal_surat = $_REQUEST['asal_surat'];
             $isi = $_REQUEST['isi'];
-            $kode = substr($_REQUEST['kode'], 0, 30);
-            $nkode = trim($kode);
-            $indeks = $_REQUEST['indeks'];
             $tgl_surat = $_REQUEST['tgl_surat'];
-            $keterangan = $_REQUEST['keterangan'];
             $id_user = $_SESSION['id_user'];
 
             //validasi input data
@@ -65,7 +61,7 @@ if (empty($_SESSION['admin'])) {
                                     echo '<script language="javascript">window.history.back();</script>';
                                 } else {
 
-                                    $ekstensi = array('jpg', 'png', 'jpeg', 'doc', 'docx', 'pdf');
+                                    $ekstensi = array('jpg', 'png', 'jpeg', 'doc', 'docx', 'pdf', 'xlsx', 'xlx');
                                     $file = $_FILES['file']['name'];
                                     $x = explode('.', $file);
                                     $eks = strtolower(end($x));
@@ -242,7 +238,7 @@ if (empty($_SESSION['admin'])) {
                         }
 
                         ?>
-                        <label for="asal_surat">Asal Surat</label>
+                        <label class="active" for="asal_surat">Asal Surat</label>
                     </div>
                     <!-- <div class="input-field col s6">
                         <i class="material-icons prefix md-prefix">storage</i>
@@ -266,7 +262,7 @@ if (empty($_SESSION['admin'])) {
                             unset($_SESSION['no_surat']);
                         }
                         ?>
-                        <label for="no_surat">Nomor Surat</label>
+                        <label for="no_surat" class="active">Nomor Surat</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix md-prefix">date_range</i>
@@ -278,7 +274,7 @@ if (empty($_SESSION['admin'])) {
                             unset($_SESSION['tgl_surat']);
                         }
                         ?>
-                        <label for="tgl_surat">Tanggal Surat</label>
+                        <label class="active" for="tgl_surat">Tanggal Surat</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix md-prefix">description</i>
@@ -290,7 +286,7 @@ if (empty($_SESSION['admin'])) {
                             unset($_SESSION['isi']);
                         }
                         ?>
-                        <label for="isi">Isi Ringkas</label>
+                        <label for="isi" class="active">Isi Ringkas</label>
                     </div>
                     <!-- <div class="input-field col s6">
                     <i class="material-icons prefix md-prefix">featured_play_list</i>
@@ -324,7 +320,7 @@ if (empty($_SESSION['admin'])) {
                                     unset($_SESSION['errFormat']);
                                 }
                                 ?>
-                                <small class="red-text">*Format file yang diperbolehkan *.JPG, *.PNG, *.DOC, *.DOCX, *.PDF dan ukuran maksimal file 2 MB!</small>
+                                <small class="red-text">*Format file yang diperbolehkan *.JPG, *.PNG, *.DOC, *.DOCX, *.PDF , *.XLSX ,*.XLX dan ukuran maksimal file 2 MB!</small>
                             </div>
                         </div>
                     </div>

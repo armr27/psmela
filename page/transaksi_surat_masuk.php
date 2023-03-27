@@ -183,7 +183,7 @@ if (empty($_SESSION['admin'])) {
                                     <td>' . $row['no_surat'] . '<br/><hr/>' . indoDate($row['tgl_surat']) . '</td>
                                     <td>';
 
-                        if ($_SESSION['id_user'] != $row['id_user'] and $_SESSION['id_user'] != 1) {
+                        if ($_SESSION['id_user'] != $row['id_user'] and $_SESSION['id_user'] != 1 ) {
                             echo '<a class="btn small yellow darken-3 waves-effect waves-light" href="?page=ctk&id_surat=' . $row['id_surat'] . '" target="_blank">
                                             <i class="material-icons">print</i> PRINT</a>';
                         } else {
