@@ -124,16 +124,17 @@ if (empty($_SESSION['admin'])) {
                                 </div>
                             </div>
                         </div>
-
+                    <?php if ($_SESSION['admin'] != 5) { 
+                        echo'
                         <div class="col s12 m4">
                             <div class="card lime darken-1">
                                 <div class="card-content">
                                     <span class="card-title white-text"><i class="material-icons md-36">drafts</i> Jumlah Surat Keluar</span>
-                                    <?php echo '<h5 class="white-text link">' . $count2 . ' Surat Keluar</h5>'; ?>
+                                    <h5 class="white-text link">' . $count2 . ' Surat Keluar</h5>
                                 </div>
                             </div>
                         </div>
-
+                    ';} ?>
                         <div class="col s12 m4">
                             <div class="card yellow darken-3">
                                 <div class="card-content">

@@ -6,7 +6,7 @@ if (empty($_SESSION['admin'])) {
     die();
 } else {
 
-    if ($_SESSION['admin'] != 1 and $_SESSION['admin'] != 3  and $_SESSION['admin'] != 4) {
+    if ($_SESSION['admin'] != 1 and $_SESSION['admin'] != 3  and $_SESSION['admin'] != 4 and $_SESSION['admin'] != 5){
         echo '<script language="javascript">
                     window.alert("ERROR! Anda tidak memiliki hak akses untuk membuka halaman ini");
                     window.location.href="./logout.php";
@@ -34,6 +34,7 @@ if (empty($_SESSION['admin'])) {
             }
         } else {
 
+            
             $query = mysqli_query($config, "SELECT surat_masuk FROM tbl_sett");
             list($surat_masuk) = mysqli_fetch_array($query);
 
@@ -57,9 +58,13 @@ if (empty($_SESSION['admin'])) {
                                 <div class="col m7">
                                     <ul class="left">
                                         <li class="waves-effect waves-light hide-on-small-only"><a href="?page=tsm" class="judul"><i class="material-icons">mail</i> Surat Masuk</a></li>
-                                        <li class="waves-effect waves-light">
-                                            <a href="?page=tsm&act=add"><i class="material-icons md-24">add_circle</i> Tambah Data</a>
-                                        </li>
+                                        <?php if($_SESSION['admin'] != 5) { 
+                                            echo '
+                                            <li class="waves-effect waves-light">
+                                                <a href="?page=tsm&act=add"><i class="material-icons md-24">add_circle</i> Tambah Data</a>
+                                            </li>';
+                                        }
+                                        ?>
                                     </ul>
                                 </div>
                                 <div class="col m5 hide-on-med-and-down">
@@ -216,13 +221,18 @@ if (empty($_SESSION['admin'])) {
                                     <tr>
                                         <th width="10%">No. Agenda</th>
                                         <th width="30%">Isi Ringkas/Perihal<br/> File</th>
-                                        <th width="24%">Asal Surat</th>
+                                        <th width="20%">Asal Surat</th>
+                                        ';
+                                        if ($_SESSION['admin'] == 5){ echo'
+                                        <th width="18%">Tujuan Surat</th>';}
+                echo'
                                         <th width="18%">No. Surat<br/>Tgl Surat</th>
                                         <th width="18%">Tindakan <span class="right tooltipped" data-position="left" data-tooltip="Atur jumlah data yang ditampilkan"><a class="modal-trigger" href="#modal"><i class="material-icons" style="color: #333;">settings</i></a></span></th>
 
                                             <div id="modal" class="modal">
                                                 <div class="modal-content white">
                                                     <h5>Jumlah data yang ditampilkan per halaman</h5>';
+
                 $query = mysqli_query($config, "SELECT id_sett,surat_masuk FROM tbl_sett");
                 list($id_sett, $surat_masuk) = mysqli_fetch_array($query);
                 echo '
@@ -270,7 +280,11 @@ if (empty($_SESSION['admin'])) {
                                 <tbody>';
 
                 //script untuk menampilkan data
-                $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk ORDER by id_surat DESC LIMIT $curr, $limit");
+                if($_SESSION['admin']==5){
+                    $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk INNER JOIN tbl_disposisi ON tbl_surat_masuk.id_surat = tbl_disposisi.id_surat WHERE tbl_surat_masuk.notif = 1 ORDER by tbl_surat_masuk.id_surat DESC LIMIT $curr, $limit");
+                } else {
+                    $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk ORDER by id_surat DESC LIMIT $curr, $limit");
+                }
                 if (mysqli_num_rows($query) > 0) {
                     $no = 1;
                     while ($row = mysqli_fetch_array($query)) {
@@ -289,7 +303,13 @@ if (empty($_SESSION['admin'])) {
                             echo '<em>Tidak ada file yang di upload</em>';
                         }
                         echo '</td>
-                                        <td>' . $row['asal_surat'] . '</td>
+                                        <td>' . $row['asal_surat'] . '</td>';
+
+                        if ($_SESSION['admin'] == 5) { 
+                        echo'
+                                        <td>' . $row['tujuan'] . '</td>'; }
+
+                        echo'
                                         <td>' . $row['no_surat'] . '<br/><hr/>' . indoDate($row['tgl_surat']) . '</td>
                                         <td>';
 
@@ -298,6 +318,9 @@ if (empty($_SESSION['admin'])) {
                                                 <i class="material-icons">print</i> PRINT</a>
                                                 <a class="btn small light-green waves-effect waves-light tooltipped" data-position="left" data-tooltip="Pilih Disp untuk menambahkan Disposisi Surat" href="?page=tsm&act=disp&id_surat=' . $row['id_surat'] . '">
                                                     <i class="material-icons">description</i> DISP</a>';
+                        } else if ($_SESSION['id_user'] != $row['id_user'] and $_SESSION['admin'] == 5) {
+                            echo '<a class="btn small yellow darken-3 waves-effect waves-light" href="?page=ctk&id_surat=' . $row['id_surat'] . '" target="_blank">
+                                                <i class="material-icons">print</i> PRINT</a>';
                         } else {
                             echo '<a class="btn small blue waves-effect waves-light" href="?page=tsm&act=edit&id_surat=' . $row['id_surat'] . '">
                                                     <i class="material-icons">edit</i> EDIT</a>

@@ -42,7 +42,7 @@ if (empty($_SESSION['admin'])) {
                         echo '<script language="javascript">window.history.back();</script>';
                     } else {
 
-                        if (!preg_match("/^[2-4]*$/", $admin)) {
+                        if (!preg_match("/^[2-5]*$/", $admin)) {
                             $_SESSION['tipeuser'] = 'Form Tipe User hanya boleh mengandung karakter angka 2 atau 3';
                             echo '<script language="javascript">window.history.back();</script>';
                         } else {
@@ -201,7 +201,7 @@ if (empty($_SESSION['admin'])) {
                             unset($_SESSION['errUser5']);
                         }
                         ?>
-                        <label for="username">Username</label>
+                        <label for="username" class="active">Username</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix md-prefix">text_fields</i>
@@ -213,7 +213,7 @@ if (empty($_SESSION['admin'])) {
                             unset($_SESSION['namauser']);
                         }
                         ?>
-                        <label for="nama">Nama</label>
+                        <label for="nama" class="active">Nama</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix md-prefix">lock</i>
@@ -225,11 +225,11 @@ if (empty($_SESSION['admin'])) {
                             unset($_SESSION['errPassword']);
                         }
                         ?>
-                        <label for="password">Password</label>
+                        <label for="password" class="active">Password</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix md-prefix">looks_one</i>
-                        <input id="nip" type="text" class="validate" name="nip" required>
+                        <input id="nip" type="text" class="validate" name="nip"  required>
                         <?php
                         if (isset($_SESSION['nipuser'])) {
                             $nipuser = $_SESSION['nipuser'];
@@ -237,7 +237,7 @@ if (empty($_SESSION['admin'])) {
                             unset($_SESSION['nipuser']);
                         }
                         ?>
-                        <label for="nip">NIP</label>
+                        <label for="nip" class="active">NIP</label>
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix md-prefix">supervisor_account</i><label>Pilih Tampilan User</label><br />
@@ -246,6 +246,7 @@ if (empty($_SESSION['admin'])) {
                                 <!-- <option value="3">User Biasa</option> -->
                                 <option value="2">Administrator</option>
                                 <option value="4">Kepala Bagian/intansi</option>
+                                <option value="5">Staff</option>
                             </select>
                         </div>
                         <?php
@@ -260,7 +261,7 @@ if (empty($_SESSION['admin'])) {
                     <div class="input-field col s6">
                         <i class="material-icons prefix md-prefix">assignment_ind</i>
                         <input id="jabatan" type="text" class="validate" name="jabatan" required>
-                        <label for="jabatan">jabatan</label>
+                        <label for="jabatan" class="active">jabatan</label>
                     </div>
 
                     <div class="input-field col s6 tooltipped" data-position="top" data-tooltip="Pastikan File Tanda Tangan Jelas">

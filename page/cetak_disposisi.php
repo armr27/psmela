@@ -274,7 +274,7 @@ if (empty($_SESSION['admin'])) {
             }
         }
         echo '
-                </tbody>x
+                </tbody>
             </table>
             ';
         $query = mysqli_query($config, "SELECT nama,jabatan, ttd, nip FROM `tbl_user` INNER JOIN `tbl_disposisi` on tbl_user.id_user = tbl_disposisi.id_user WHERE id_surat = $id_surat");

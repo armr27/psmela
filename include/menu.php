@@ -61,6 +61,19 @@ if (!empty($_SESSION['admin'])) {
                             </li>
                         </ul>
                     <?php
+                    } else if ($_SESSION['admin'] == 5) {
+                    ?>
+                    <ul class="collapsible collapsible-accordion">
+                            <li>
+                                <a class="collapsible-header"><i class="material-icons">repeat</i> Transaksi Surat</a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <li><a href="?page=tsm">Surat Masuk</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    <?php
                     }
                     ?>
                 </li>
@@ -138,7 +151,7 @@ if (!empty($_SESSION['admin'])) {
                 </li>
                 <li><a href="./"><i class="material-icons"></i>&nbsp; Beranda</a></li>
                 <?php
-                if ($_SESSION['admin'] == 1 || $_SESSION['admin'] == 2 || $_SESSION['admin'] == 4) { ?>
+                if ($_SESSION['admin'] == 1 || $_SESSION['admin'] == 2 || $_SESSION['admin'] == 4 ) { ?>
                     <li><a class="dropdown-button" href="#!" data-activates="transaksi">Transaksi Surat <i class="material-icons md-18">arrow_drop_down</i></a></li>
                     <ul id='transaksi' class='dropdown-content'>
                         <li><a href="?page=tsm">Surat Masuk</a></li>
@@ -148,7 +161,17 @@ if (!empty($_SESSION['admin'])) {
                         <?php } ?>
                     </ul>
                 <?php
+                } else if ($_SESSION['admin']==5) {
+                ?>
+                <li><a class="dropdown-button" href="#!" data-activates="transaksi">Transaksi Surat <i class="material-icons md-18">arrow_drop_down</i></a></li>
+                    <ul id='transaksi' class='dropdown-content'>
+                        <li><a href="?page=tsm">Surat Masuk</a></li>
+                    </ul>
+                <?php 
                 }
+                ?>
+                <?php
+                if ($_SESSION['admin'] != 5){
                 ?>
                 <li><a class="dropdown-button" href="#!" data-activates="agenda">Buku Agenda <i class="material-icons md-18">arrow_drop_down</i></a></li>
                 <ul id='agenda' class='dropdown-content'>
@@ -160,7 +183,9 @@ if (!empty($_SESSION['admin'])) {
                     <li><a href="?page=gsm">Surat Masuk</a></li>
                     <li><a href="?page=gsk">Surat Keluar</a></li>
                 </ul>
-                <!-- <li><a href="?page=ref">Referensi</a></li> -->
+                <?php
+                }
+                ?>
                 <?php
                 if ($_SESSION['admin'] == 1) { ?>
                     <li><a class="dropdown-button" href="#!" data-activates="pengaturan">Pengaturan <i class="material-icons md-18">arrow_drop_down</i></a></li>

@@ -38,7 +38,7 @@ if (empty($_SESSION['admin'])) {
                               </script>';
                 } else {
 
-                    if (!preg_match("/^[2-4]*$/", $admin)) {
+                    if (!preg_match("/^[2-5]*$/", $admin)) {
                         $_SESSION['tipeuser'] = 'Form Tipe User hanya boleh mengandung karakter angka 2 atau 3';
                         echo '<script language="javascript">window.history.back();</script>';
                     } else {
@@ -185,6 +185,7 @@ if (empty($_SESSION['admin'])) {
                                                 <!-- <option value="3">User Biasa</option> -->
                                                 <option value="2">Administrator</option>
                                                 <option value="4">Kepala Bagian/Intansi</option>
+                                                <option value="5">Staff</option>
                                             </select>
                                         </div>
                                         <?php

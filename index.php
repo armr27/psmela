@@ -276,12 +276,12 @@ $config = conn($host, $username, $password, $database);
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix md-prefix">account_circle</i>
                                     <input id="username" type="text" class="validate" name="username" required>
-                                    <label for="username">Nama pengguna</label>
+                                    <label for="username" class ="active">Nama pengguna</label>
                                 </div>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix md-prefix">lock</i>
                                     <input id="password" type="password" class="validate" name="password" required">
-                                    <label for="password">Kata sandi</label>
+                                    <label for="password" class ="active">Kata sandi</label>
                                 </div>
                                 <div class="input-field col s12">
                                     <button type="submit" class="btn-large waves-effect waves-light blue-grey col s12" name="submit">MASUK</button>

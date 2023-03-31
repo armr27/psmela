@@ -80,7 +80,7 @@ if (empty($_SESSION['admin'])) {
 
                                         //validasi file
                                         if (in_array($eks, $ekstensi) == true) {
-                                            if ($ukuran < 2500000) {
+                                            if ($ukuran < 5120000) {
 
                                                 move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $nfile);
 
@@ -101,7 +101,7 @@ if (empty($_SESSION['admin'])) {
                                                 echo '<script language="javascript">window.history.back();</script>';
                                             }
                                         } else {
-                                            $_SESSION['errFormat'] = 'Format file yang diperbolehkan hanya *.JPG, *.PNG, *.DOC, *.DOCX atau *.PDF!';
+                                            $_SESSION['errFormat'] = 'Format file yang diperbolehkan hanya *.JPG, *.PNG, *.DOC, *.DOCX, *.XLSX , *.XLX atau *.PDF!';
                                             echo '<script language="javascript">window.history.back();</script>';
                                         }
                                     } else {
