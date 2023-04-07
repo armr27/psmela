@@ -1,3 +1,13 @@
+<style>
+ .badge {
+  background-color: #7CFC00 ;
+  color: white;
+  padding: 4px 8px;
+  margin : 0px;
+  text-align: left;
+  border-radius: 5px;
+}
+</style>
 <?php
 //cek session
 if (empty($_SESSION['admin'])) {
@@ -30,6 +40,9 @@ if (empty($_SESSION['admin'])) {
                     break;
                 case 'del':
                     include "page/hapus_surat_masuk.php";
+                    break;
+                case 'acc':
+                    include "page/acc_surat_masuk.php";
                     break;
             }
         } else {
@@ -221,7 +234,7 @@ if (empty($_SESSION['admin'])) {
                                     <tr>
                                         <th width="10%">No. Agenda</th>
                                         <th width="30%">Isi Ringkas/Perihal<br/> File</th>
-                                        <th width="20%">Asal Surat</th>
+                                        <th width="15%">Asal Surat</th>
                                         ';
                                         if ($_SESSION['admin'] == 5){ echo'
                                         <th width="18%">Tujuan Surat</th>';}
@@ -306,8 +319,16 @@ if (empty($_SESSION['admin'])) {
                                         <td>' . $row['asal_surat'] . '</td>';
 
                         if ($_SESSION['admin'] == 5) { 
-                        echo'
-                                        <td>' . $row['tujuan'] . '</td>'; }
+                            if ($row['status'] == 'selesai' ){
+                                        echo'
+                                        <td>' . $row['tujuan'] . '<span class="badge"><i class="material-icons">done</i></span></td>';
+                                    } else {
+                                        echo'
+                                        <td>' . $row['tujuan'] . '</td>';
+                                    }
+                                    
+                                    
+                                    }
 
                         echo'
                                         <td>' . $row['no_surat'] . '<br/><hr/>' . indoDate($row['tgl_surat']) . '</td>
@@ -320,7 +341,9 @@ if (empty($_SESSION['admin'])) {
                                                     <i class="material-icons">description</i> DISP</a>';
                         } else if ($_SESSION['id_user'] != $row['id_user'] and $_SESSION['admin'] == 5) {
                             echo '<a class="btn small yellow darken-3 waves-effect waves-light" href="?page=ctk&id_surat=' . $row['id_surat'] . '" target="_blank">
-                                                <i class="material-icons">print</i> PRINT</a>';
+                                                <i class="material-icons">print</i> PRINT</a>
+                                                <a class="btn small light-green waves-effect waves-light" href="?page=tsm&act=acc&id_surat=' . $row['id_surat'] . '">
+                                                    <i class="material-icons">check</i> Selesai</a>';
                         } else {
                             echo '<a class="btn small blue waves-effect waves-light" href="?page=tsm&act=edit&id_surat=' . $row['id_surat'] . '">
                                                     <i class="material-icons">edit</i> EDIT</a>
