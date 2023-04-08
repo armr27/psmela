@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2023 at 11:04 PM
+-- Generation Time: Apr 08, 2023 at 09:35 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -37,6 +37,13 @@ CREATE TABLE `tbl_disposisi` (
   `id_surat` int(10) NOT NULL,
   `id_user` tinyint(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_disposisi`
+--
+
+INSERT INTO `tbl_disposisi` (`id_disposisi`, `tujuan`, `isi_disposisi`, `sifat`, `batas_waktu`, `catatan`, `id_surat`, `id_user`) VALUES
+(3, 'Bagian Obat', 'ssss', '', '0000-00-00', '', 4, 14);
 
 -- --------------------------------------------------------
 
@@ -148,8 +155,16 @@ CREATE TABLE `tbl_surat_masuk` (
   `file` varchar(250) NOT NULL,
   `keterangan` varchar(250) NOT NULL,
   `id_user` tinyint(2) NOT NULL,
-  `notif` int(1) NOT NULL
+  `notif` int(1) NOT NULL,
+  `status` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_surat_masuk`
+--
+
+INSERT INTO `tbl_surat_masuk` (`id_surat`, `no_agenda`, `no_surat`, `asal_surat`, `isi`, `kode`, `indeks`, `tgl_surat`, `tgl_diterima`, `file`, `keterangan`, `id_user`, `notif`, `status`) VALUES
+(4, 2, '123123', 'DPPKB', 'surat kedua', '', '', '2023-04-07', '2023-04-07', '1826-Ratu SIma.pdf', '', 1, 1, 'selesai');
 
 -- --------------------------------------------------------
 
@@ -232,7 +247,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_disposisi`
 --
 ALTER TABLE `tbl_disposisi`
-  MODIFY `id_disposisi` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_disposisi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_klasifikasi`
@@ -250,7 +265,7 @@ ALTER TABLE `tbl_surat_keluar`
 -- AUTO_INCREMENT for table `tbl_surat_masuk`
 --
 ALTER TABLE `tbl_surat_masuk`
-  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_surat` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
