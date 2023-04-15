@@ -81,7 +81,6 @@ if (empty($_SESSION['admin'])) {
                                         //validasi file
                                         if (in_array($eks, $ekstensi) == true) {
                                             if ($ukuran < 5120000) {
-
                                                 move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $nfile);
 
                                                 $query = mysqli_query($config, "INSERT INTO tbl_surat_masuk(no_agenda,no_surat,asal_surat,isi,kode,indeks,tgl_surat,
@@ -320,7 +319,7 @@ if (empty($_SESSION['admin'])) {
                                     unset($_SESSION['errFormat']);
                                 }
                                 ?>
-                                <small class="red-text">*Format file yang diperbolehkan *.JPG, *.PNG, *.DOC, *.DOCX, *.PDF , *.XLSX ,*.XLX dan ukuran maksimal file 2 MB!</small>
+                                <small class="red-text">*Format file yang diperbolehkan *.JPG, *.PNG, *.DOC, *.DOCX, *.PDF , *.XLSX ,*.XLX dan ukuran maksimal file 5 MB!</small>
                             </div>
                         </div>
                     </div>

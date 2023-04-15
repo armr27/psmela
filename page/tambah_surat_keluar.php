@@ -77,7 +77,7 @@ if (empty($_SESSION['admin'])) {
                                         $rand = rand(1, 10000);
                                         $nfile = $rand . "-" . $file;
                                         if (in_array($eks, $ekstensi) == true) {
-                                            if ($ukuran < 2500000) {
+                                            if ($ukuran < 5120000) {
 
                                                 move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $nfile);
 
@@ -302,7 +302,7 @@ if (empty($_SESSION['admin'])) {
                                     unset($_SESSION['errFormat']);
                                 }
                                 ?>
-                                <small class="red-text">*Format file yang diperbolehkan *.JPG, *.PNG, *.DOC, *.DOCX, *.PDF dan ukuran maksimal file 2 MB!</small>
+                                <small class="red-text">*Format file yang diperbolehkan *.JPG, *.PNG, *.DOC, *.DOCX, *.PDF dan ukuran maksimal file 5 MB!</small>
                             </div>
                         </div>
                     </div>
