@@ -244,7 +244,7 @@ if (empty($_SESSION['admin'])) {
                         <div class="input-field col s11 right">
                             <select class="browser-default validate" name="admin" id="admin" required>
                                 <!-- <option value="3">User Biasa</option> -->
-                                <option value="2">Administrator</option>
+                                <!-- <option value="2">Administrator</option> -->
                                 <option value="4">Kepala Bagian/intansi</option>
                                 <option value="5">Staff</option>
                             </select>
