@@ -183,7 +183,7 @@ if (empty($_SESSION['admin'])) {
                                                     ?>
                                                 </option>
                                                 <!-- <option value="3">User Biasa</option> -->
-                                                <option value="2">Administrator</option>
+                                                <!-- <option value="2">Administrator</option> -->
                                                 <option value="4">Kepala Bagian/Intansi</option>
                                                 <option value="5">Staff</option>
                                             </select>
