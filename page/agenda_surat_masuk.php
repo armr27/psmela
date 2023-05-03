@@ -79,7 +79,7 @@ if (empty($_SESSION['admin'])) {
             die();
         } else {
 
-            $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk WHERE tgl_diterima BETWEEN '$dari_tanggal' AND '$sampai_tanggal'");
+            $query = mysqli_query($config, "SELECT * FROM tbl_surat_masuk WHERE tgl_diterima BETWEEN '$dari_tanggal' AND '$sampai_tanggal' ORDER BY no_agenda DESC");
 
             $query2 = mysqli_query($config, "SELECT nama FROM tbl_instansi");
             list($nama) = mysqli_fetch_array($query2);
